@@ -1,0 +1,74 @@
+body {
+    /* background-color: lightblue;*/
+}
+
+
+/* textarea {
+    cols:"30";
+    rows:"10"
+} */
+
+.testNumber {
+    width: 160px;
+    height: 25px;
+}
+
+.testTime {
+    margin-left: 0px;
+    width: 400px;
+    height: 25px;
+}
+
+.questionNumber {
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 150px;
+    font-size: 20px;
+}
+
+.selectQuestion {
+    width: 50px;
+    height: 25px;
+    font-size: large;
+    /* background-color: aqua; */
+}
+
+.questionOperation {
+    /* background-color: aqua; */
+    width: 100px;
+    position: relative;
+    margin-left: 130px;
+    margin-top: -36px;
+}
+
+.pre {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 2px;
+}
+
+.next {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+[type="radio"] {
+    margin-top: 20px;
+    margin-left: 14px;
+    disabled: true;
+}
+
+[type="radio"]:hover {
+    background-color: aqua;
+}
+
+[for] {
+    margin-left: -5px;
+    margin-right: 8px;
+}
+
+[for]:hover {
+    color: red;
+    font: large bold;
+    background-color: aqua;
+}
