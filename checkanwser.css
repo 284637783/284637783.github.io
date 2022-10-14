@@ -3,10 +3,10 @@ body {
 }
 
 
-/* textarea {
-    cols:"30";
-    rows:"10"
-} */
+fieldset {
+    width: auto;
+}
+
 
 .testNumber {
     width: 160px;
