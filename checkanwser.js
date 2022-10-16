@@ -2,8 +2,7 @@ var yourAnswer = new Array;
 
 function start() {
     if (document.getElementById("testPaper").selectedIndex == 0) {
-        alert('请先选择试题！'); //如果未选择试题，弹出提示
-        console.log(document.getElementById("testPaper").selectedIndex);
+        alert('请先选择试题！'); //如果未选择试题，弹出提示       
     } else {
         radiobtnEnable(1);
         document.getElementById('btnStart').disabled = true; //禁用开始按钮
@@ -42,7 +41,8 @@ function selectedIndexChange(symbol) {
         index++;
         if (index < document.getElementById("questionNO").length) {
             question.options[index].selected = true;
-            setTimeout(() => optionsUnchecked(), 300) //延时0.3秒取消radio button的被选中状态
+            selectChange();
+            // setTimeout(() => optionsUnchecked(), 500) //延时0.5秒取消radio button的被选中状态
         } else {
             alert('已经是最后一题了！');
         }
@@ -52,9 +52,23 @@ function selectedIndexChange(symbol) {
             alert('已经是第一题了！');
         } else {
             question.options[index].selected = true;
+            selectChange();
         }
     }
 }
+
+function selectChange() {
+    var question = document.getElementById("questionNO");
+    var index = question.selectedIndex;
+    if (yourAnswer[index] != undefined) {
+        optionsChecked(yourAnswer[index]);
+        // console.log(yourAnswer[index]);
+    } else {
+        optionsUnchecked();
+    }
+
+}
+
 //让选项按钮取消被选中
 function optionsUnchecked() {
     document.getElementById("A").checked = false;
@@ -62,6 +76,31 @@ function optionsUnchecked() {
     document.getElementById("C").checked = false;
     document.getElementById("D").checked = false;
 }
+//让选项按钮被选中
+function optionsChecked(checkedFlag) {
+    // alert(checkedFlag);
+    switch (checkedFlag) {
+        case "A":
+            document.getElementById("A").checked = true;
+            break;
+        case "B":
+            document.getElementById("B").checked = true;
+            break;
+        case "C":
+            document.getElementById("C").checked = true;
+            break;
+        case "D":
+            document.getElementById("D").checked = true;
+            break;
+        case "未作答":
+            optionsUnchecked();
+            break;
+        case "undefined":
+            optionsUnchecked();
+            break;
+    }
+}
+
 //radio button按钮禁用和启用
 function radiobtnEnable(enabletag) {
     if (enabletag == 1) {
@@ -93,7 +132,7 @@ function radioBtn(option) {
     var index = document.getElementById("questionNO").selectedIndex;
     yourAnswer[index] = option;
     refresh();
-    selectedIndexChange('+');
+    // selectedIndexChange('+');
 
 }
 //刷新答题记录文本框
@@ -109,6 +148,7 @@ function refresh() {
     }
     document.getElementById("txtLog").value = txtLogValue;
 }
+
 //结束答题
 function Finish() {
     if (yourAnswer.length < Standard_Answer1.length || yourAnswer.includes("未作答")) {
@@ -198,6 +238,8 @@ function save() {
     var text = "您在" + savedate.getFullYear() + "年" + months + "月" + dates + "日" + hours + ":" + minutes + ":" + seconds + "完成了《" + obj.options[index].text + "》的测试，测试结果如下：" + "\n" + document.getElementById("txtResult").value;
     download(filename, text);
 }
+
+
 
 function download(filename, text) {
     var element = document.createElement('a');
