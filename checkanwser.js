@@ -42,7 +42,7 @@ function selectedIndexChange(symbol) {
         index++;
         if (index < document.getElementById("questionNO").length) {
             question.options[index].selected = true;
-            setTimeout(() => optionsUnchecked(), 500) //延时0.5秒取消radio button的被选中状态
+            setTimeout(() => optionsUnchecked(), 300) //延时0.3秒取消radio button的被选中状态
         } else {
             alert('已经是最后一题了！');
         }
