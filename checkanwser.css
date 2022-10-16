@@ -2,11 +2,10 @@ body {
     /* background-color: lightblue;*/
 }
 
-
 fieldset {
-    width: auto;   
+    width: auto;
+    /* background-color: aqua; */
 }
-
 
 .testNumber {
     width: 160px;
@@ -15,6 +14,7 @@ fieldset {
 
 .testTime {
     margin-left: 0px;
+    margin-top: 10px;
     width: 400px;
     height: 25px;
 }
@@ -55,7 +55,6 @@ fieldset {
 [type="radio"] {
     margin-top: 20px;
     margin-left: 14px;
-    disabled: true;
 }
 
 [type="radio"]:hover {
