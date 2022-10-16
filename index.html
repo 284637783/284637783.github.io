@@ -18,7 +18,7 @@
 
     <h3>浙江大学研究生公共英语水平考试自测模拟题集(帮你对答案)</h3>
     <div>
-        <a href="https://zjueducn-my.sharepoint.com/:b:/g/personal/12013057_zju_edu_cn/EeYsr5iWIE5Fv1faCD4-nbQBLZ54JCTbhFoLBLv0Lnu72A?e=eOvaHc" target="_blank">《浙江大学英语水平考试自测模拟题集》下载链接</a>
+        <a href="https://zjueducn-my.sharepoint.com/:b:/g/personal/12013057_zju_edu_cn/EeYsr5iWIE5Fv1faCD4-nbQBLZ54JCTbhFoLBLv0Lnu72A?e=eOvaHc" target="_blank">《浙江大学英语水平考试自测模拟题集》PDF下载链接</a>
     </div>
     <br>
 
@@ -43,9 +43,17 @@
             </select>
             <div class="testTime">
                 考试用时：
-                <input type="text" id="textTime" title="input1">
+                <input type="text" id="textTime" title="input1" readonly="true">
             </div>
         </form>
+    </fieldset>
+
+    <fieldset>
+        <legend>考试操作</legend>
+        <button type="button" onclick="start()" id="btnStart">开始考试</button>
+        <button type="button" onclick="timePause()" id="btnPause" disabled="true">暂停考试</button>
+        <button type="button" onclick="Finish()" id="btnFinish" disabled="true">结束考试</button>
+        <button type="button" onclick="save()" id="btnSave" disabled="true">保存考试结果</button>
     </fieldset>
 
     <fieldset>
@@ -53,7 +61,8 @@
         <form action="">
             <div class="questionNumber">
                 第
-                <select class="selectQuestion" id="questionNO" title="select2">
+                <select class="selectQuestion" id="questionNO" title="select2" onchange="selectChange()">
+                    <optgroup label="听力">
                         <option value="">1</option>
                         <option value="">2</option>
                         <option value="">3</option>
@@ -69,6 +78,9 @@
                         <option value="">13</option>
                         <option value="">14</option>
                         <option value="">15</option>
+                    </optgroup>
+                        
+                    <optgroup label="词汇">
                         <option value="">16</option>
                         <option value="">17</option>
                         <option value="">18</option>
@@ -89,6 +101,9 @@
                         <option value="">33</option>
                         <option value="">34</option>
                         <option value="">35</option>
+                    </optgroup>
+
+                    <optgroup label="完型">
                         <option value="">36</option>
                         <option value="">37</option>
                         <option value="">38</option>
@@ -109,6 +124,8 @@
                         <option value="">53</option>
                         <option value="">54</option>
                         <option value="">55</option>
+                    </optgroup>
+                    <optgroup label="阅读">
                         <option value="">56</option>
                         <option value="">57</option>
                         <option value="">58</option>
@@ -129,6 +146,7 @@
                         <option value="">73</option>
                         <option value="">74</option>
                         <option value="">75</option>
+                    </optgroup>                         
                     </select> 题
             </div>
 
@@ -160,13 +178,7 @@
         </form>
     </fieldset>
 
-    <fieldset>
-        <legend>考试操作</legend>
-        <button type="button" onclick="start()" id="btnStart">开始考试</button>
-        <button type="button" onclick="timePause()" id="btnPause" disabled="true">暂停考试</button>
-        <button type="button" onclick="Finish()" id="btnFinish" disabled="true">结束考试</button>
-        <button type="button" onclick="save()" id="btnSave" disabled="true">保存考试结果</button>
-    </fieldset>
+
     <!-- <iframe src="https://zjueducn-my.sharepoint.com/:b:/g/personal/12013057_zju_edu_cn/EeYsr5iWIE5Fv1faCD4-nbQBLZ54JCTbhFoLBLv0Lnu72A?e=eOvaHc" frameborder="0" width="1000px" height="2790px"></iframe>
     <a href="https://zjueducn-my.sharepoint.com/:b:/g/personal/12013057_zju_edu_cn/EeYsr5iWIE5Fv1faCD4-nbQBLZ54JCTbhFoLBLv0Lnu72A?e=eOvaHc">下载链接</a> -->
 
