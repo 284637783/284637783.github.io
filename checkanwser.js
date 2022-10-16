@@ -1,11 +1,5 @@
 var yourAnswer = new Array;
 
-var aaa = document.getElementById("testPaper");
-// var question = document.getElementById("questionNO");
-// var index = question.selectedIndex;
-var bbb = aaa.selectedIndex;
-
-
 function start() {
     if (document.getElementById("testPaper").selectedIndex == 0) {
         alert('请先选择试题！'); //如果未选择试题，弹出提示
@@ -14,6 +8,7 @@ function start() {
         radiobtnEnable(1);
         document.getElementById('btnStart').disabled = true; //禁用开始按钮
         document.getElementById('btnPause').disabled = false; //启用暂停按钮
+        document.getElementById("btnFinish").disabled = false; //启用结束考试按钮        
         timeControll(1);
     }
 }
@@ -125,6 +120,7 @@ function Finish() {
             }
             timeControll(0);
             answerCheck(arry_Standard_Anwser[document.getElementById("testPaper").selectedIndex - 1]);
+            document.getElementById("btnSave").disabled = false; //启用保存考试结果按钮
         } else {
             var unAnswerNO = "";
             for (i = 0; i < Standard_Answer1.length; i++) {
@@ -138,9 +134,6 @@ function Finish() {
         }
     }
 }
-
-
-
 
 
 var Standard_Answer1 = ['C', 'A', 'C', 'B', 'D', 'A', 'A', 'A', 'A', 'C', 'A', 'D', 'D', 'C', 'B', 'C', 'C', 'A', 'B', 'B', 'C', 'C', 'D', 'D', 'B', 'D', 'A', 'A', 'B', 'C', 'A', 'A', 'B', 'B', 'C', 'B', 'C', 'A', 'D', 'A', 'C', 'B', 'D', 'A', 'C', 'B', 'B', 'D', 'C', 'D', 'A', 'D', 'B', 'B', 'C', 'D', 'C', 'D', 'A', 'B', 'C', 'D', 'A', 'C', 'D', 'C', 'D', 'A', 'C', 'B', 'A', 'D', 'C', 'A', 'D'];
@@ -191,8 +184,27 @@ function answerCheck(arry_Standard_Anwser) {
 }
 
 function save() {
-    var fso = new ActiveXObject(Scripting.FileSystemObject);
-    var f = fso.createtextfile("C:\\a.txt", 2, true);
-    f.writeLine("hello world!");
-    f.close();
+    var savedate = new Date();
+    var months = (savedate.getMonth() + 1) < 10 ? "0" + (savedate.getMonth() + 1) : (savedate.getMonth() + 1);
+    var dates = savedate.getDate() < 10 ? "0" + savedate.getDate() : savedate.getDate();
+    var hours = savedate.getHours() < 10 ? "0" + savedate.getHours() : savedate.getHours();
+    var minutes = savedate.getMinutes() < 10 ? "0" + savedate.getMinutes() : savedate.getMinutes();
+    var seconds = savedate.getSeconds() < 10 ? "0" + savedate.getSeconds() : savedate.getSeconds();
+
+    var filename = "考试结果" + savedate.getFullYear() + months + dates + hours + minutes + seconds;
+    var obj = document.getElementById("testPaper");
+    var index = obj.selectedIndex;
+
+    var text = "您在" + savedate.getFullYear() + "年" + months + "月" + dates + "日" + hours + ":" + minutes + ":" + seconds + "完成了《" + obj.options[index].text + "》的测试，测试结果如下：" + "\n" + document.getElementById("txtResult").value;
+    download(filename, text);
+}
+
+function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
 }
