@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>对答案</title>
     <link rel="stylesheet" href="checkanwser.css">
-    <script src="checkanwser.js"></script>
+    <!-- <script src="checkanwser.js"></script> -->
 </head>
 
 <body>
@@ -17,7 +17,8 @@
         <legend>试题选择</legend>
         <form action="">
             模拟题选择：
-            <select class="testNumber" id="testPaper">
+            <select class="testNumber" id="testPaper" title="select1">
+                    <option value="">-----请选择试题-----</option>
                     <option value="">模拟题（一）</option>
                     <option value="">模拟题（二）</option>
                     <option value="">模拟题（三）</option>
@@ -33,7 +34,7 @@
             </select>
             <div class="testTime">
                 考试用时：
-                <input type="text" id="textTime">
+                <input type="text" id="textTime" title="input1">
             </div>
         </form>
     </fieldset>
@@ -43,7 +44,7 @@
         <form action="">
             <div class="questionNumber">
                 第
-                <select class="selectQuestion" id="questionNO">
+                <select class="selectQuestion" id="questionNO" title="select2">
                         <option value="">1</option>
                         <option value="">2</option>
                         <option value="">3</option>
@@ -124,22 +125,18 @@
 
 
             <div class="questionOperation">
-                <button type="button" onclick="selectedIndexChange('-')">上一题</button> <br>
-                <button type="button" onclick="selectedIndexChange('+')">下一题</button>
+                <button type="button" onclick="selectedIndexChange('-')" id="pre">上一题</button> <br>
+                <button type="button" onclick="selectedIndexChange('+')" id="next">下一题</button>
             </div>
 
 
-            <input type="radio" name="optionItem" onclick="selectedIndexChange('+')" id="A" disabled="true">A
+            <input type="radio" title="input2" name="optionItem" onclick="radioBtn('A')" id="A" disabled="true">A
 
-            <input type="radio" name="optionItem" onclick="selectedIndexChange('+')" id="B" disabled="true">B
+            <input type="radio" title="input3" name="optionItem" onclick="radioBtn('B')" id="B" disabled="true">B
 
-            <input type="radio" name="optionItem" onclick="selectedIndexChange('+')" id="C" disabled="true">C
+            <input type="radio" title="input4" name="optionItem" onclick="radioBtn('C')" id="C" disabled="true">C
 
-            <input type="radio" name="optionItem" onclick="selectedIndexChange('+')" id="D" disabled="true">D
-
-
-
-
+            <input type="radio" title="input5" name="optionItem" onclick="radioBtn('D')" id="D" disabled="true">D
         </form>
     </fieldset>
 
@@ -147,50 +144,23 @@
         <legend>答题信息</legend>
         <form action="">
             答题记录：
-            <br> <textarea cols="30" rows="10"></textarea>
-            <br> 考试结果：
+            <br> <textarea title="textarea1" cols="30" rows="10" id="txtLog"></textarea>
+            <br> 考试信息：
             <br>
-            <textarea cols="30" rows="10"></textarea>
+            <textarea title="textarea2" cols="50" rows="10" id="txtResult"></textarea>
         </form>
     </fieldset>
 
     <fieldset>
         <legend>考试操作</legend>
         <button type="button" onclick="start()" id="btnStart">开始考试</button>
-        <button type="button" onclick="timePause()" id="btnPause">暂停考试</button>
-        <button type="button">结束考试</button>
-        <button type="button">保存考试结果</button>
+        <button type="button" onclick="timePause()" id="btnPause" disabled="true">暂停考试</button>
+        <button type="button" onclick="Finish()" id="btnFinish">结束考试</button>
+        <button type="button" onclick="save()" id="btnSave">保存考试结果</button>
     </fieldset>
-
-
+    <iframe src="研究生公共英语水平考试自测模拟题集 1-192.pdf" frameborder="0" width="1000px"></iframe>
 
 </body>
-
-</html>
-
-
-<!-- <html>
-
-<head>
-    <script type="text/javascript">
-        function getLength() {
-            alert(document.getElementById("mySelect").length)
-        }
-    </script>
-</head>
-
-<body>
-
-    <form>
-        <select id="mySelect">
-  <option>Apple</option>
-  <option>Pear</option>
-  <option>Banana</option>
-  <option>Orange</option>
-</select>
-        <input type="button" onclick="getLength()" value="How many options in the list?">
-    </form>
-
-</body> -->
+<script src="checkanwser.js"></script>
 
 </html>
