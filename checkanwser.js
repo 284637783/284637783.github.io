@@ -1,21 +1,26 @@
-function showMessage(str) {
-    alert(str);
-}
-var startTime = 0;
-var endTime = 0;
+var yourAnswer = new Array;
+
+var aaa = document.getElementById("testPaper");
+// var question = document.getElementById("questionNO");
+// var index = question.selectedIndex;
+var bbb = aaa.selectedIndex;
+
 
 function start() {
-    document.getElementById('A').disabled = false;
-    document.getElementById('B').disabled = false;
-    document.getElementById('C').disabled = false;
-    document.getElementById('D').disabled = false;
-    document.getElementById('btnStart').disabled = true;
-    timeControll(1);
+    if (document.getElementById("testPaper").selectedIndex == 0) {
+        alert('请先选择试题！'); //如果未选择试题，弹出提示
+        console.log(document.getElementById("testPaper").selectedIndex);
+    } else {
+        radiobtnEnable(1);
+        document.getElementById('btnStart').disabled = true; //禁用开始按钮
+        document.getElementById('btnPause').disabled = false; //启用暂停按钮
+        timeControll(1);
+    }
 }
 
 var testTime = 0;
 var timeID;
-
+//考试时间记录
 function timeControll(flag) {
     if (flag == 1) {
         timeID = setInterval(function() {
@@ -42,7 +47,7 @@ function selectedIndexChange(symbol) {
         index++;
         if (index < document.getElementById("questionNO").length) {
             question.options[index].selected = true;
-            setTimeout(() => optionsUnchecked(), 1000) //延时一秒取消radio button的被选中状态
+            setTimeout(() => optionsUnchecked(), 500) //延时0.5秒取消radio button的被选中状态
         } else {
             alert('已经是最后一题了！');
         }
@@ -62,45 +67,132 @@ function optionsUnchecked() {
     document.getElementById("C").checked = false;
     document.getElementById("D").checked = false;
 }
-
+//radio button按钮禁用和启用
+function radiobtnEnable(enabletag) {
+    if (enabletag == 1) {
+        document.getElementById('A').disabled = false;
+        document.getElementById('B').disabled = false;
+        document.getElementById('C').disabled = false;
+        document.getElementById('D').disabled = false;
+    } else {
+        document.getElementById('A').disabled = true;
+        document.getElementById('B').disabled = true;
+        document.getElementById('C').disabled = true;
+        document.getElementById('D').disabled = true;
+    }
+}
+//暂停按钮
 function timePause() {
     if (document.getElementById("btnPause").innerHTML == '暂停考试') {
         timeControll(0);
+        radiobtnEnable(0);
         document.getElementById("btnPause").innerHTML = '继续考试';
     } else {
         timeControll(1);
+        radiobtnEnable(0);
         document.getElementById("btnPause").innerHTML = '暂停考试';
     }
+}
+//ABCD单选按钮
+function radioBtn(option) {
+    var index = document.getElementById("questionNO").selectedIndex;
+    yourAnswer[index] = option;
+    refresh();
+    selectedIndexChange('+');
 
+}
+//刷新答题记录文本框
+function refresh() {
+    var txtLogValue = '';
+    for (i = 0; i < yourAnswer.length; i++) {
+        if (yourAnswer[i] == undefined) {
+            yourAnswer[i] = '未作答';
+        }
+    }
+    for (i = 0; i < yourAnswer.length; i++) {
+        txtLogValue = txtLogValue + "第" + (i + 1) + "题:" + yourAnswer[i] + "\n";
+    }
+    document.getElementById("txtLog").value = txtLogValue;
+}
+//结束答题
+function Finish() {
+    if (yourAnswer.length < Standard_Answer1.length || yourAnswer.includes("未作答")) {
+        if (confirm("答题尚未完成，是否提交？") == true) {
+            for (i = 0; i < Standard_Answer1.length; i++) {
+                if (yourAnswer[i] == undefined) {
+                    yourAnswer[i] = '未作答';
+                }
+            }
+            timeControll(0);
+            answerCheck(arry_Standard_Anwser[document.getElementById("testPaper").selectedIndex - 1]);
+        } else {
+            var unAnswerNO = "";
+            for (i = 0; i < Standard_Answer1.length; i++) {
+                if ((yourAnswer[i] == undefined) || (yourAnswer[i] == "未作答")) {
+                    yourAnswer[i] = '未作答';
+                    unAnswerNO = unAnswerNO + "第" + i + "题，未作答；" + "\n";
+                }
+            }
+            document.getElementById("txtResult").value = unAnswerNO;
+            alert("以下题目未作答(详见“考试信息”文本框)，点击确定继续答题。" + "\n" + unAnswerNO);
+        }
+    }
 }
 
 
-// 获取时间：
-// 1.时间对象.getFullYear（）获取到时间对象中的年份信息
-// 2,时间对象.getMonth（）获取到时间对象中的月份信息
-// 3.时间对象.getDate（）获取到时间对象中的日期信息
-// 4.时间对象.getHours（）获取到时间对像中的小时信息
-// 5.时间对象.getMinutes（）获取到时间对象中的分钟信息
-// 6.时间对象.getSeconds（）获取到时间对象中的秒钟信息
-// 7.时间对象.getDay（）获取到时间对象中的星期信息
-// 8.时间对象.getTime（）获取到时间对象中的时间戳信息
-// 设置时间：
-// 1.时间对象.setFullYear（数字）设置时间对象中的年份信息
-// 2,时间对象.setMonth（数字）设置时间对象中的月份信息
-// 3.时间对象.setDate（数字）设置时间对象中的日期信息
-// 4.时间对象.setHours（数字）设置时间对象中的小时信息
-// 5.时间对象.setMinutes（数字）设置时间对象中的分钟信息
-// 6.时间对象.setSeconds（数字）设置时间对象中的秒钟信息
-// 7.时间对象.setTime（数字）设置时间对象中的时间戳信息
 
-// //获得Date总的毫秒数（时间戳）,不是当前时间的毫秒数,而是距离1970年1月1号过了多少毫秒数
-// //1.通过valueOf（）getTime（）
-// var date new Date（）;
-// console.log(date.valueof（）);
-// //就是我们现在时间距离1970.1.1总的毫秒数
-// console.log(date.getTime（）);
-// //2.简单的写法（最常用的写法）
-// var date1 + new Date（）; //+new Date（）返回的就是总的毫秒数
-// console.log(date1);
-// //3.H5新增的获得总的毫秒数
-// console.log(Date.now（）);
+
+
+var Standard_Answer1 = ['C', 'A', 'C', 'B', 'D', 'A', 'A', 'A', 'A', 'C', 'A', 'D', 'D', 'C', 'B', 'C', 'C', 'A', 'B', 'B', 'C', 'C', 'D', 'D', 'B', 'D', 'A', 'A', 'B', 'C', 'A', 'A', 'B', 'B', 'C', 'B', 'C', 'A', 'D', 'A', 'C', 'B', 'D', 'A', 'C', 'B', 'B', 'D', 'C', 'D', 'A', 'D', 'B', 'B', 'C', 'D', 'C', 'D', 'A', 'B', 'C', 'D', 'A', 'C', 'D', 'C', 'D', 'A', 'C', 'B', 'A', 'D', 'C', 'A', 'D'];
+
+var Standard_Answer2 = ['B', 'C', 'D', 'B', 'B', 'D', 'B', 'D', 'B', 'D', 'C', 'D', 'B', 'B', 'D', 'B', 'D', 'D', 'C', 'A', 'A', 'D', 'C', 'A', 'D', 'B', 'A', 'B', 'A', 'B', 'C', 'C', 'A', 'D', 'B', 'C', 'D', 'A', 'B', 'B', 'D', 'B', 'A', 'C', 'C', 'D', 'C', 'A', 'B', 'C', 'D', 'A', 'A', 'B', 'D', 'D', 'B', 'A', 'C', 'C', 'D', 'B', 'D', 'C', 'B', 'A', 'C', 'C', 'B', 'C', 'C', 'B', 'D', 'A', 'A'];
+
+var Standard_Answer3 = ['B', 'D', 'C', 'D', 'A', 'B', 'C', 'B', 'B', 'B', 'D', 'B', 'B', 'C', 'D', 'C', 'B', 'A', 'D', 'B', 'B', 'D', 'B', 'A', 'C', 'D', 'B', 'A', 'A', 'B', 'D', 'C', 'C', 'D', 'D', 'B', 'C', 'A', 'D', 'D', 'C', 'A', 'B', 'C', 'A', 'B', 'D', 'A', 'D', 'C', 'B', 'D', 'C', 'A', 'B', 'D', 'A', 'B', 'A', 'B', 'D', 'A', 'B', 'B', 'B', 'B', 'A', 'C', 'D', 'A', 'A', 'A', 'C', 'B', 'D'];
+var Standard_Answer4 = ['D', 'A', 'C', 'B', 'B', 'C', 'A', 'B', 'C', 'D', 'C', 'C', 'D', 'C', 'A', 'B', 'C', 'D', 'D', 'A', 'D', 'B', 'A', 'D', 'B', 'B', 'D', 'A', 'C', 'C', 'A', 'B', 'B', 'B', 'B', 'C', 'B', 'C', 'A', 'C', 'D', 'A', 'D', 'B', 'C', 'A', 'B', 'C', 'C', 'D', 'C', 'A', 'C', 'A', 'A', 'D', 'D', 'A', 'D', 'B', 'C', 'D', 'B', 'B', 'A', 'A', 'C', 'B', 'D', 'C', 'A', 'C', 'B', 'B', 'D'];
+var Standard_Answer5 = ['C', 'D', 'B', 'B', 'C', 'B', 'B', 'B', 'C', 'B', 'C', 'C', 'B', 'D', 'A', 'B', 'C', 'C', 'A', 'B', 'C', 'A', 'C', 'D', 'D', 'C', 'D', 'B', 'A', 'D', 'A', 'D', 'A', 'D', 'B', 'A', 'D', 'B', 'B', 'B', 'C', 'A', 'B', 'C', 'D', 'A', 'B', 'B', 'A', 'A', 'A', 'D', 'B', 'C', 'A', 'B', 'C', 'D', 'A', 'B', 'C', 'D', 'C', 'A', 'D', 'A', 'B', 'B', 'D', 'D', 'C', 'A', 'A', 'B', 'D'];
+var Standard_Answer6 = ['D', 'A', 'B', 'D', 'D', 'B', 'B', 'C', 'A', 'B', 'C', 'C', 'A', 'B', 'D', 'A', 'C', 'D', 'B', 'A', 'A', 'D', 'C', 'D', 'B', 'C', 'B', 'C', 'B', 'B', 'D', 'A', 'C', 'C', 'C', 'C', 'B', 'A', 'A', 'B', 'A', 'D', 'B', 'D', 'C', 'A', 'D', 'A', 'D', 'A', 'A', 'B', 'B', 'A', 'A', 'D', 'D', 'B', 'D', 'B', 'C', 'D', 'A', 'B', 'D', 'B', 'D', 'B', 'A', 'C', 'B', 'B', 'A', 'D', 'B'];
+var Standard_Answer7 = ['A', 'A', 'D', 'A', 'D', 'D', 'A', 'C', 'D', 'B', 'C', 'D', 'B', 'C', 'D', 'D', 'B', 'B', 'A', 'C', 'C', 'D', 'D', 'C', 'B', 'B', 'A', 'D', 'C', 'A', 'C', 'B', 'C', 'A', 'C', 'B', 'A', 'C', 'A', 'B', 'C', 'A', 'B', 'C', 'B', 'A', 'A', 'D', 'D', 'A', 'B', 'C', 'A', 'B', 'A', 'A', 'C', 'D', 'B', 'A', 'C', 'A', 'B', 'D', 'C', 'B', 'D', 'A', 'C', 'C', 'D', 'C', 'A', 'B', 'C'];
+var Standard_Answer8 = ['C', 'A', 'B', 'D', 'C', 'D', 'C', 'D', 'C', 'D', 'C', 'A', 'C', 'B', 'A', 'D', 'B', 'C', 'B', 'B', 'A', 'B', 'C', 'A', 'C', 'A', 'B', 'C', 'D', 'B', 'C', 'A', 'A', 'C', 'B', 'A', 'B', 'A', 'C', 'D', 'D', 'B', 'C', 'A', 'A', 'B', 'A', 'B', 'C', 'C', 'D', 'B', 'D', 'A', 'C', 'B', 'D', 'A', 'C', 'B', 'A', 'C', 'C', 'D', 'D', 'A', 'C', 'B', 'D', 'D', 'A', 'B', 'D', 'D', 'A'];
+var Standard_Answer9 = ['B', 'B', 'D', 'D', 'D', 'B', 'D', 'D', 'A', 'A', 'D', 'B', 'D', 'A', 'A', 'A', 'B', 'C', 'D', 'B', 'C', 'A', 'D', 'C', 'B', 'A', 'D', 'C', 'D', 'B', 'A', 'D', 'B', 'C', 'A', 'C', 'D', 'A', 'D', 'A', 'A', 'D', 'B', 'B', 'C', 'D', 'A', 'A', 'B', 'D', 'C', 'D', 'C', 'D', 'D', 'C', 'D', 'A', 'A', 'B', 'A', 'A', 'B', 'D', 'C', 'D', 'C', 'A', 'B', 'B', 'A', 'C', 'D', 'B', 'D'];
+var Standard_Answer10 = ['C', 'C', 'D', 'A', 'C', 'B', 'D', 'D', 'C', 'C', 'A', 'A', 'A', 'D', 'B', 'A', 'D', 'A', 'D', 'B', 'A', 'B', 'B', 'C', 'A', 'B', 'A', 'A', 'D', 'A', 'C', 'A', 'A', 'B', 'A', 'B', 'C', 'D', 'A', 'B', 'C', 'B', 'D', 'A', 'B', 'A', 'C', 'D', 'B', 'A', 'C', 'C', 'B', 'A', 'D', 'B', 'C', 'C', 'B', 'A', 'B', 'D', 'A', 'A', 'C', 'A', 'A', 'C', 'D', 'A', 'A', 'C', 'B', 'C', 'D'];
+var Standard_Answer11 = ['B', 'C', 'A', 'C', 'B', 'B', 'D', 'A', 'C', 'D', 'B', 'B', 'A', 'C', 'C', 'C', 'A', 'B', 'D', 'B', 'B', 'B', 'A', 'C', 'D', 'A', 'C', 'C', 'D', 'D', 'A', 'D', 'A', 'D', 'D', 'B', 'D', 'A', 'B', 'C', 'C', 'D', 'A', 'D', 'B', 'C', 'C', 'D', 'B', 'D', 'B', 'A', 'C', 'C', 'B', 'B', 'C', 'D', 'A', 'A', 'B', 'D', 'B', 'C', 'B', 'A', 'C', 'B', 'D', 'C', 'C', 'D', 'A', 'A', 'B'];
+var Standard_Answer12 = ['C', 'A', 'A', 'D', 'A', 'B', 'B', 'C', 'A', 'B', 'C', 'B', 'B', 'B', 'B', 'A', 'D', 'C', 'A', 'C', 'B', 'D', 'B', 'B', 'C', 'A', 'B', 'C', 'C', 'C', 'A', 'C', 'D', 'A', 'B', 'C', 'D', 'A', 'C', 'B', 'C', 'C', 'D', 'D', 'C', 'C', 'C', 'B', 'C', 'C', 'D', 'A', 'D', 'A', 'C', 'A', 'A', 'C', 'B', 'D', 'B', 'A', 'D', 'B', 'C', 'A', 'B', 'B', 'C', 'D', 'C', 'B', 'A', 'C', 'B'];
+
+var arry_Standard_Anwser = [Standard_Answer1, Standard_Answer2, Standard_Answer3, Standard_Answer4, Standard_Answer5, Standard_Answer6, Standard_Answer7, Standard_Answer8, Standard_Answer9, Standard_Answer10, Standard_Answer11, Standard_Answer12];
+
+//核对答案
+function answerCheck(arry_Standard_Anwser) {
+    var Error_Sum = 0; //错题的个数
+    var Error_Listening = 0; //听力题错误数量
+    var Error_Vocabulary = 0; //词汇题错误数量
+    var Error_ClozeTest = 0; //完形填空错误数量
+    var Error_Reading = 0; //阅读题错误数量
+    var txtResult = "";
+    for (i = 0; i < Standard_Answer1.length; i++) {
+        if (yourAnswer[i] != arry_Standard_Anwser[i]) {
+            Error_Sum++;
+            if (i < 15) {
+                Error_Listening++;
+            } else if (i >= 15 && i < 35) {
+                Error_Vocabulary++;
+            } else if (i >= 35 && i < 55) {
+                Error_ClozeTest++;
+            } else if (i >= 55 && i < 75) {
+                Error_Reading++;
+            }
+            var wrongMessage = (yourAnswer[i] == "未作答") ? ("题：您未作答") : ("题：您的答案为" + yourAnswer[i]);
+            txtResult = txtResult + ("第" + (i + 1) + wrongMessage + "，而参考答案为" + arry_Standard_Anwser[i] + "(×)" + "\r\n");
+        } else {
+            txtResult = txtResult + ("第" + (i + 1) + "题：您的答案为" + yourAnswer[i] + "，参考答案为" + arry_Standard_Anwser[i] + "(√)" + "\r\n");
+        }
+    }
+    var Score_Lose = Error_Listening + Error_ClozeTest + Error_Reading * 2 + Error_Vocabulary * 1.5;
+    document.getElementById("txtResult").value = txtResult + ("考试结果详情：" + "\r\n" + "您此次考试用时" + Math.floor(testTime / 60) + "分" + testTime % 60 + "秒，" + "总共错了" + Error_Sum + "题。" + "\r\n" + "其中听力错了" + Error_Listening + "题，词汇题错了" + Error_Vocabulary + "题，" + "\r\n" + "完型填空错了" + Error_ClozeTest + "题，阅读错了" + Error_Reading + "题。" + "\r\n" + "累计扣分" + Score_Lose + "分，总得分为" + (105 - Score_Lose) + "分，得分率为" + Math.round((105 - Score_Lose) * 100 / 105, 2) + "%。");
+}
+
+function save() {
+    var fso = new ActiveXObject(Scripting.FileSystemObject);
+    var f = fso.createtextfile("C:\\a.txt", 2, true);
+    f.writeLine("hello world!");
+    f.close();
+}
