@@ -123,7 +123,7 @@ function timePause() {
         document.getElementById("btnPause").innerHTML = '继续考试';
     } else {
         timeControll(1);
-        radiobtnEnable(0);
+        radiobtnEnable(1);
         document.getElementById("btnPause").innerHTML = '暂停考试';
     }
 }
@@ -132,7 +132,7 @@ function radioBtn(option) {
     var index = document.getElementById("questionNO").selectedIndex;
     yourAnswer[index] = option;
     refresh();
-    // selectedIndexChange('+');
+    //selectedIndexChange('+');//点击ABCD单选按钮后自动跳转到下一题；
 
 }
 //刷新答题记录文本框
@@ -171,6 +171,12 @@ function Finish() {
             }
             document.getElementById("txtResult").value = unAnswerNO;
             alert("以下题目未作答(详见“考试信息”文本框)，点击确定继续答题。" + "\n" + unAnswerNO);
+        }
+    } else {
+        if (confirm("答题已完成，是否确认提交？") == true) {
+            answerCheck(arry_Standard_Anwser[document.getElementById("testPaper").selectedIndex - 1]);
+            document.getElementById("btnSave").disabled = false; //启用保存考试结果按钮
+            timeControll(0); //停止计时
         }
     }
 }
