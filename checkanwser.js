@@ -161,6 +161,7 @@ function Finish() {
             timeControll(0);
             answerCheck(arry_Standard_Anwser[document.getElementById("testPaper").selectedIndex - 1]);
             document.getElementById("btnSave").disabled = false; //启用保存考试结果按钮
+            document.getElementById("btnStart").disabled = false; //启用开始考试结果按钮
         } else {
             var unAnswerNO = "";
             for (i = 0; i < Standard_Answer1.length; i++) {
@@ -256,3 +257,8 @@ function download(filename, text) {
     element.click();
     document.body.removeChild(element);
 }
+
+window.onbeforeunload = function(event) {
+    event.returnValue = "我在这写点东西...";
+};
+
