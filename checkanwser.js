@@ -132,7 +132,9 @@ function radioBtn(option) {
     var index = document.getElementById("questionNO").selectedIndex;
     yourAnswer[index] = option;
     refresh();
-    //selectedIndexChange('+');//点击ABCD单选按钮后自动跳转到下一题；
+    if (document.getElementById("autoNext").checked == true) {
+        selectedIndexChange('+'); //点击ABCD单选按钮后自动跳转到下一题；
+    }
 
 }
 //刷新答题记录文本框
