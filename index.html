@@ -25,180 +25,183 @@
 </head>
 
 <body>
-
-    <h3>浙江大学研究生公共英语水平考试自测模拟题集(帮你对答案)</h3>
-    <div>
-        <a href="https://zjueducn-my.sharepoint.com/:b:/g/personal/12013057_zju_edu_cn/EeYsr5iWIE5Fv1faCD4-nbQBLZ54JCTbhFoLBLv0Lnu72A?e=eOvaHc" target="_blank">《浙江大学研究生公共英语水平考试自测模拟题集》PDF下载链接</a>
-    </div>
-    <br>
-    <div>
-        <a href="https://zjueducn-my.sharepoint.com/:u:/g/personal/12013057_zju_edu_cn/EX7rb48PF7JJiGJ7ZZbU9iABAbAtCc6PkaugOlT5ktnY3g?e=34mKYc" target="_blank">《浙江大学研究生公共英语水平考试自测模拟题集》听力音频下载链接</a>
-    </div>
-    <br>
-
-    <fieldset>
-        <legend>试题选择</legend>
-        <form action="">
-            模拟题选择：
-            <select class="testNumber" id="testPaper" title="select1">
-                    <option value="">-----请选择试题-----</option>
-                    <option value="">模拟题（一）</option>
-                    <option value="">模拟题（二）</option>
-                    <option value="">模拟题（三）</option>
-                    <option value="">模拟题（四）</option>
-                    <option value="">模拟题（五）</option>
-                    <option value="">模拟题（六）</option>
-                    <option value="">模拟题（七）</option>
-                    <option value="">模拟题（八）</option>
-                    <option value="">模拟题（九）</option>
-                    <option value="">模拟题（十）</option>
-                    <option value="">模拟题（十一）</option>
-                    <option value="">模拟题（十二）</option>
-            </select>
-            <div class="testTime">
-                考试用时：
-                <input type="text" id="textTime" title="input1" readonly="true">
+    <div class="container">
+        <div class="leftOperation">
+            <h3>浙江大学研究生公共英语水平考试自测模拟题集(帮你对答案)</h3>
+            <div>
+                <a href="https://zjueducn-my.sharepoint.com/:b:/g/personal/12013057_zju_edu_cn/EeYsr5iWIE5Fv1faCD4-nbQBLZ54JCTbhFoLBLv0Lnu72A?e=eOvaHc" target="_blank">《浙江大学研究生公共英语水平考试自测模拟题集》PDF下载链接</a>
             </div>
-        </form>
-    </fieldset>
-
-    <fieldset>
-        <legend>考试操作</legend>
-        <button type="button" onclick="start()" id="btnStart">开始考试</button>
-        <button type="button" onclick="timePause()" id="btnPause" disabled="true">暂停考试</button>
-        <button type="button" onclick="Finish()" id="btnFinish" disabled="true">结束考试</button>
-        <button type="button" onclick="save()" id="btnSave" disabled="true">保存考试结果</button>
-    </fieldset>
-
-    <fieldset>
-        <legend>作答区域</legend>
-        <form action="">
-            <div class="questionNumber">
-                第
-                <select class="selectQuestion" id="questionNO" title="select2" onchange="selectChange()">
-                    <optgroup label="听力">
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="">4</option>
-                        <option value="">5</option>
-                        <option value="">6</option>
-                        <option value="">7</option>
-                        <option value="">8</option>
-                        <option value="">9</option>
-                        <option value="">10</option>
-                        <option value="">11</option>
-                        <option value="">12</option>
-                        <option value="">13</option>
-                        <option value="">14</option>
-                        <option value="">15</option>
-                    </optgroup>
-                        
-                    <optgroup label="词汇">
-                        <option value="">16</option>
-                        <option value="">17</option>
-                        <option value="">18</option>
-                        <option value="">19</option>
-                        <option value="">20</option>
-                        <option value="">21</option>
-                        <option value="">22</option>
-                        <option value="">23</option>
-                        <option value="">24</option>
-                        <option value="">25</option>
-                        <option value="">26</option>
-                        <option value="">27</option>
-                        <option value="">28</option>
-                        <option value="">29</option>
-                        <option value="">30</option>
-                        <option value="">31</option>
-                        <option value="">32</option>
-                        <option value="">33</option>
-                        <option value="">34</option>
-                        <option value="">35</option>
-                    </optgroup>
-
-                    <optgroup label="完型">
-                        <option value="">36</option>
-                        <option value="">37</option>
-                        <option value="">38</option>
-                        <option value="">39</option>
-                        <option value="">40</option>
-                        <option value="">41</option>
-                        <option value="">42</option>
-                        <option value="">43</option>
-                        <option value="">44</option>
-                        <option value="">45</option>
-                        <option value="">46</option>
-                        <option value="">47</option>
-                        <option value="">48</option>
-                        <option value="">49</option>
-                        <option value="">50</option>
-                        <option value="">51</option>
-                        <option value="">52</option>
-                        <option value="">53</option>
-                        <option value="">54</option>
-                        <option value="">55</option>
-                    </optgroup>
-                    <optgroup label="阅读">
-                        <option value="">56</option>
-                        <option value="">57</option>
-                        <option value="">58</option>
-                        <option value="">59</option>
-                        <option value="">60</option>
-                        <option value="">61</option>
-                        <option value="">62</option>
-                        <option value="">63</option>
-                        <option value="">64</option>
-                        <option value="">65</option>
-                        <option value="">66</option>
-                        <option value="">67</option>
-                        <option value="">68</option>
-                        <option value="">69</option>
-                        <option value="">70</option>
-                        <option value="">71</option>
-                        <option value="">72</option>
-                        <option value="">73</option>
-                        <option value="">74</option>
-                        <option value="">75</option>
-                    </optgroup>                         
-                    </select> 题
-            </div>
-
-
-            <div class="questionOperation">
-                <button type="button" onclick="selectedIndexChange('-')" id="pre">上一题</button> <br>
-                <button type="button" onclick="selectedIndexChange('+')" id="next">下一题</button>
-            </div>
-            <div class="autojump">
-                <input type="checkbox" title="autonext" id="autoNext">自动跳转下一题
-             </div>
-
-
-            <input type="radio" title="input2" name="optionItem" onclick="radioBtn('A')" id="A" disabled="true">A
-
-            <input type="radio" title="input3" name="optionItem" onclick="radioBtn('B')" id="B" disabled="true">B
-
-            <input type="radio" title="input4" name="optionItem" onclick="radioBtn('C')" id="C" disabled="true">C
-
-            <input type="radio" title="input5" name="optionItem" onclick="radioBtn('D')" id="D" disabled="true">D
-        </form>
-    </fieldset>
-
-    <fieldset>
-        <legend>答题信息</legend>
-        <form action="">
-            答题记录：
-            <br> <textarea title="textarea1" cols="30" rows="10" id="txtLog"></textarea>
-            <br> 考试信息：
             <br>
-            <textarea title="textarea2" cols="50" rows="10" id="txtResult"></textarea>
-        </form>
-    </fieldset>
+            <div>
+                <a href="https://zjueducn-my.sharepoint.com/:u:/g/personal/12013057_zju_edu_cn/EX7rb48PF7JJiGJ7ZZbU9iABAbAtCc6PkaugOlT5ktnY3g?e=34mKYc" target="_blank">《浙江大学研究生公共英语水平考试自测模拟题集》听力音频下载链接</a>
+            </div>
+            <br>
+
+            <fieldset>
+                <legend>试题选择</legend>
+                <form action="">
+                    模拟题选择：
+                    <select class="testNumber" id="testPaper" title="select1">
+                            <option value="">-----请选择试题-----</option>
+                            <option value="">模拟题（一）</option>
+                            <option value="">模拟题（二）</option>
+                            <option value="">模拟题（三）</option>
+                            <option value="">模拟题（四）</option>
+                            <option value="">模拟题（五）</option>
+                            <option value="">模拟题（六）</option>
+                            <option value="">模拟题（七）</option>
+                            <option value="">模拟题（八）</option>
+                            <option value="">模拟题（九）</option>
+                            <option value="">模拟题（十）</option>
+                            <option value="">模拟题（十一）</option>
+                            <option value="">模拟题（十二）</option>
+                    </select>
+                    <div class="testTime">
+                        考试用时：
+                        <input type="text" id="textTime" title="input1" readonly="true">
+                    </div>
+                </form>
+            </fieldset>
+
+            <fieldset>
+                <legend>考试操作</legend>
+                <button type="button" onclick="start()" id="btnStart">开始考试</button>
+                <button type="button" onclick="timePause()" id="btnPause" disabled="true">暂停考试</button>
+                <button type="button" onclick="Finish()" id="btnFinish" disabled="true">结束考试</button>
+                <button type="button" onclick="save()" id="btnSave" disabled="true">保存考试结果</button>
+            </fieldset>
+
+            <fieldset>
+                <legend>作答区域</legend>
+                <form action="">
+                    <div class="questionNumber">
+                        第
+                        <select class="selectQuestion" id="questionNO" title="select2" onchange="selectChange()">
+                            <optgroup label="听力">
+                                <option value="">1</option>
+                                <option value="">2</option>
+                                <option value="">3</option>
+                                <option value="">4</option>
+                                <option value="">5</option>
+                                <option value="">6</option>
+                                <option value="">7</option>
+                                <option value="">8</option>
+                                <option value="">9</option>
+                                <option value="">10</option>
+                                <option value="">11</option>
+                                <option value="">12</option>
+                                <option value="">13</option>
+                                <option value="">14</option>
+                                <option value="">15</option>
+                            </optgroup>
+
+                            <optgroup label="词汇">
+                                <option value="">16</option>
+                                <option value="">17</option>
+                                <option value="">18</option>
+                                <option value="">19</option>
+                                <option value="">20</option>
+                                <option value="">21</option>
+                                <option value="">22</option>
+                                <option value="">23</option>
+                                <option value="">24</option>
+                                <option value="">25</option>
+                                <option value="">26</option>
+                                <option value="">27</option>
+                                <option value="">28</option>
+                                <option value="">29</option>
+                                <option value="">30</option>
+                                <option value="">31</option>
+                                <option value="">32</option>
+                                <option value="">33</option>
+                                <option value="">34</option>
+                                <option value="">35</option>
+                            </optgroup>
+
+                            <optgroup label="完型">
+                                <option value="">36</option>
+                                <option value="">37</option>
+                                <option value="">38</option>
+                                <option value="">39</option>
+                                <option value="">40</option>
+                                <option value="">41</option>
+                                <option value="">42</option>
+                                <option value="">43</option>
+                                <option value="">44</option>
+                                <option value="">45</option>
+                                <option value="">46</option>
+                                <option value="">47</option>
+                                <option value="">48</option>
+                                <option value="">49</option>
+                                <option value="">50</option>
+                                <option value="">51</option>
+                                <option value="">52</option>
+                                <option value="">53</option>
+                                <option value="">54</option>
+                                <option value="">55</option>
+                            </optgroup>
+                            <optgroup label="阅读">
+                                <option value="">56</option>
+                                <option value="">57</option>
+                                <option value="">58</option>
+                                <option value="">59</option>
+                                <option value="">60</option>
+                                <option value="">61</option>
+                                <option value="">62</option>
+                                <option value="">63</option>
+                                <option value="">64</option>
+                                <option value="">65</option>
+                                <option value="">66</option>
+                                <option value="">67</option>
+                                <option value="">68</option>
+                                <option value="">69</option>
+                                <option value="">70</option>
+                                <option value="">71</option>
+                                <option value="">72</option>
+                                <option value="">73</option>
+                                <option value="">74</option>
+                                <option value="">75</option>
+                            </optgroup>                         
+                            </select> 题
+                    </div>
 
 
-    <!-- <iframe src="https://zjueducn-my.sharepoint.com/:b:/g/personal/12013057_zju_edu_cn/EeYsr5iWIE5Fv1faCD4-nbQBLZ54JCTbhFoLBLv0Lnu72A?e=eOvaHc" frameborder="0" width="1000px" height="2790px"></iframe>
-    <a href="https://zjueducn-my.sharepoint.com/:b:/g/personal/12013057_zju_edu_cn/EeYsr5iWIE5Fv1faCD4-nbQBLZ54JCTbhFoLBLv0Lnu72A?e=eOvaHc">下载链接</a> -->
+                    <div class="questionOperation">
+                        <button type="button" onclick="selectedIndexChange('-')" id="pre">上一题</button> <br>
+                        <button type="button" onclick="selectedIndexChange('+')" id="next">下一题</button>
+                    </div>
+                    <div class="autojump">
+                        <input type="checkbox" title="autonext" id="autoNext">自动跳转下一题
+                     </div>
 
+
+                    <input type="radio" title="input2" name="optionItem" onclick="radioBtn('A')" id="A" disabled="true">A
+
+                    <input type="radio" title="input3" name="optionItem" onclick="radioBtn('B')" id="B" disabled="true">B
+
+                    <input type="radio" title="input4" name="optionItem" onclick="radioBtn('C')" id="C" disabled="true">C
+
+                    <input type="radio" title="input5" name="optionItem" onclick="radioBtn('D')" id="D" disabled="true">D
+                </form>
+            </fieldset>
+
+            <fieldset>
+                <legend>答题信息</legend>
+                <form action="">
+                    答题记录：
+                    <br> <textarea title="textarea1" cols="30" rows="10" id="txtLog"></textarea>
+                    <br> 考试信息：
+                    <br>
+                    <textarea title="textarea2" cols="50" rows="10" id="txtResult"></textarea>
+                </form>
+            </fieldset>
+        </div>
+        <div class="rightPaper">
+            <iframe class="stylePaper" src="https://zjueducn-my.sharepoint.com/:b:/g/personal/12013057_zju_edu_cn/EeYsr5iWIE5Fv1faCD4-nbQBLZ54JCTbhFoLBLv0Lnu72A?e=eOvaHc"></iframe>
+        </div>
+        <!-- <iframe src="https://zjueducn-my.sharepoint.com/:b:/g/personal/12013057_zju_edu_cn/EeYsr5iWIE5Fv1faCD4-nbQBLZ54JCTbhFoLBLv0Lnu72A?e=eOvaHc" frameborder="0" width="1000px" height="2790px"></iframe>
+        <a href="https://zjueducn-my.sharepoint.com/:b:/g/personal/12013057_zju_edu_cn/EeYsr5iWIE5Fv1faCD4-nbQBLZ54JCTbhFoLBLv0Lnu72A?e=eOvaHc">下载链接</a> -->
+    </div>
 </body>
 
 
