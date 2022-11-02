@@ -1,6 +1,49 @@
 body {
-    /* background-color: lightblue;*/
+    min-width: 600px;
 }
+
+.container {
+    width: 100%;
+    /* overflow: hidden; */
+}
+
+.leftOperation {
+    width: 480px;
+    height: 100%;
+    float: left;
+    margin-right: -420px;
+    /* background-color: aqua; */
+    position: relative;
+    border-style: solid;
+    border-width: 1px;
+    padding: 10px;
+}
+
+.rightPaper {
+    width: 100%;
+    height: 900px;
+    float: left;
+    /* background-color: aquamarine; */
+    margin-left: 550px;
+    position: relative;
+    top: -1010px;
+}
+
+.autojump {
+    float: right;
+    width: 150px;
+    position: relative;
+    top: -30px;
+    left: -100px;
+}
+
+.stylePaper {
+    width: 70%;
+    height: 900px;
+    scroll-behavior: auto;
+}
+
+
 
 fieldset {
     width: auto;
