@@ -23,7 +23,7 @@ body {
     float: left;
     margin-left: 520px;
     position: relative;
-    top: -950px;
+    top: -900px;
 }
 
 .autojump {
@@ -36,7 +36,7 @@ body {
 
 .stylePaper {
     width: 70%;
-    height: 985px;
+    height: 900px;
     scroll-behavior: auto;
 }
 
