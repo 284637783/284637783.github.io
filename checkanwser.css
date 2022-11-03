@@ -23,7 +23,13 @@ body {
     float: left;
     margin-left: 520px;
     position: relative;
-    top: -900px;
+    top: -899px;
+}
+
+.stylePaper {
+    width: 70%;
+    height: 897px;
+    scroll-behavior: auto;
 }
 
 .autojump {
@@ -33,14 +39,6 @@ body {
     top: -30px;
     left: -100px;
 }
-
-.stylePaper {
-    width: 70%;
-    height: 900px;
-    scroll-behavior: auto;
-}
-
-
 
 fieldset {
     width: auto;
