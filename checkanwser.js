@@ -133,7 +133,7 @@ function radioBtn(option) {
     yourAnswer[index] = option;
     refresh();
     if (document.getElementById("autoNext").checked == true) {
-        selectedIndexChange('+'); //点击ABCD单选按钮后自动跳转到下一题；
+        setTimeout(() => selectedIndexChange('+'), 400) //点击ABCD单选按钮后，先延时0.4s，再自动跳转到下一题；
     }
 
 }
