@@ -1,4 +1,16 @@
 var yourAnswer = new Array;
+var paperLink = ['模拟题（一）',
+                 '模拟题（二）',
+                 '模拟题（三）',
+                 '模拟题（四）',
+                 '模拟题（五）',
+                 '模拟题（六）', 
+                 '模拟题（七）',
+                 '模拟题（八）',
+                 '模拟题（九）',
+                 '模拟题（十）',
+                 '模拟题（十一）',
+                 '模拟题（十二）']
 
 function start() {
     if (document.getElementById("testPaper").selectedIndex == 0) {
@@ -7,9 +19,19 @@ function start() {
         radiobtnEnable(1);
         document.getElementById('btnStart').disabled = true; //禁用开始按钮
         document.getElementById('btnPause').disabled = false; //启用暂停按钮
-        document.getElementById("btnFinish").disabled = false; //启用结束考试按钮        
+        document.getElementById("btnFinish").disabled = false; //启用结束考试按钮
+        document.getElementById("testPaper").disabled = true; //禁用模拟题选择下拉框         
         timeControll(1);
     }
+}
+
+function paperChoice(){
+    if (document.getElementById("testPaper").selectedIndex == 0) {
+        alert('请先选择试题！'); //如果未选择试题，弹出提示       
+    } else {
+        document.getElementById("listening").src = paperLink[document.getElementById("testPaper").selectedIndex -1]+'.mp3';
+        document.getElementById("audioLeft").innerHTML = paperLink[document.getElementById("testPaper").selectedIndex -1]+'听力音频';
+    }  
 }
 
 var testTime = 0;
@@ -154,6 +176,7 @@ function refresh() {
 
 //结束答题
 function Finish() {
+    document.getElementById("testPaper").disabled = false; //启用模拟题选择下拉框
     if (yourAnswer.length < Standard_Answer1.length || yourAnswer.includes("未作答")) {
         if (confirm("答题尚未完成，是否提交？") == true) {
             for (i = 0; i < Standard_Answer1.length; i++) {
