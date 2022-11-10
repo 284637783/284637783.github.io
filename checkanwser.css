@@ -154,7 +154,7 @@ fieldset {
 }
 
 .txt {
-    margin-top: 6.5px; 
+    margin-top: 0px; 
 }
 
 .txt > p {
@@ -163,5 +163,5 @@ fieldset {
 
 textarea {
     width: 100%;
-    height: calc((100% - 490px)/2);
+    height: calc((100% - 460px)/2);
 }
