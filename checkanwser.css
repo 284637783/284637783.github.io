@@ -13,13 +13,12 @@ html, body {
     /* background-color: aqua; */
 }
 
-.container .top {
+/* .container .top {
     background-color: gainsboro;
     height: 50px;
     line-height: 50px;
-    text-align: center;
-    /* overflow: auto; */
-}
+    text-align: center;  
+} */
 
 .top .logo {
     width: 100%;
@@ -29,12 +28,12 @@ html, body {
 }
 
 .container .middle {
-    height: calc(100% - 100px);
+    height: calc(100% - 30px);
 }
 
 .container .bottom {
     background-color: gainsboro;
-    height: 50px;
+    height: 30px;
     line-height: 20px;
     padding-top: 5px;
     text-align: center;
@@ -43,12 +42,11 @@ html, body {
 
 
 .middle .leftOperation {
-    width: 400px;
+    width: 320px;
     height: 100%;
     float: left;
     border: 1px solid;
-    border-right: 0px;
-    /* background-color: aqua; */
+    border-right: 0px;   
 }
 
 .link {
@@ -56,12 +54,12 @@ html, body {
 }
 
 .middle .rightPaper {
-    width: calc(100% - 400px); 
-    height: calc(100% - 100px);
+    width: calc(100% - 320px); 
+    height: calc(100% - 30px);
     float: left;
     background-color: #F1F3F4;
     position: absolute;
-    top: 50px;
+    top: 0px;
     right: 0;
     border: 1px solid; 
 
@@ -82,7 +80,7 @@ html, body {
 }
 
 .audioLeft {
-    width: 120px;
+    width: 110px;
     height: 50px;
     text-align: center;
     padding-top: 5px;
@@ -117,8 +115,8 @@ fieldset {
     margin-left: 16px;
 }
 
-.operation button {
-    margin: 5px 12.5px;    
+.leftOperation button {
+    margin: 0px 3px;    
 }
 
 .questionNumber {
@@ -164,4 +162,6 @@ fieldset {
 textarea {
     width: 100%;
     height: calc((100% - 460px)/2);
+    /* height: 100%; */
+    resize: none;
 }
