@@ -164,6 +164,11 @@ textarea {
 
 .link {
     text-align: center;
-    /* float: left; */
-    /* background-color: rebeccapurple; */
+    height: 100px;
+    width: 308px;
+    border: 1px solid; 
+    margin: 5px;
+    line-height: 25px;
+    /* background-color: greenyellow; */
+
 }
