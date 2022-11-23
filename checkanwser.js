@@ -12,6 +12,9 @@ var paperLink = ['模拟题（一）',
                  '模拟题（十一）',
                  '模拟题（十二）']
 
+document.getElementById("paperNO").src =decodeURI('研究生公共英语水平考试自测模拟题集 1-192')+'.pdf';
+document.getElementById("paperNO").src ='./pdfjs-dist/web/viewer.html?file=' +   document.getElementById("paperNO").src; 
+
 function start() {
     if (document.getElementById("testPaper").selectedIndex == 0) {
         alert('请先选择试题！'); //如果未选择试题，弹出提示       
@@ -28,12 +31,11 @@ function start() {
 function paperChoice(){
     if (document.getElementById("testPaper").selectedIndex == 0) {
         alert('请先选择试题！'); //如果未选择试题，弹出提示       
-    } else {  
-    
+    } else {         
+
         document.getElementById("listening").src = paperLink[document.getElementById("testPaper").selectedIndex -1]+'.mp3';
         document.getElementById("audioLeft").innerHTML = paperLink[document.getElementById("testPaper").selectedIndex -1]+'听力音频';
-        radiobtnEnable(0);
-        
+        radiobtnEnable(0);        
 
         document.getElementById('btnStart').disabled = false; //禁用开始按钮
         document.getElementById('btnPause').disabled = true; //启用暂停按钮
