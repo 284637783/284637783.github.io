@@ -49,10 +49,6 @@ html, body {
     border-right: 0px;   
 }
 
-.link {
-    text-align: center;
-}
-
 .middle .rightPaper {
     width: calc(100% - 320px); 
     height: calc(100% - 30px);
@@ -164,4 +160,10 @@ textarea {
     height: calc((100% - 460px)/2);
     /* height: 100%; */
     resize: none;
+}
+
+.link {
+    text-align: center;
+    /* float: left; */
+    /* background-color: rebeccapurple; */
 }
