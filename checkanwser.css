@@ -113,6 +113,7 @@ fieldset {
 
 .leftOperation button {
     margin: 0px 3px;    
+    -webkit-appearance: none;
 }
 
 .questionNumber {
