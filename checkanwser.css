@@ -157,7 +157,7 @@ fieldset {
 
 textarea {
     width: 100%;
-    height: calc((100% - 460px)/2);
+    height: calc((100% - 470px)/2);
     /* height: 100%; */
     resize: none;
 }
